@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/sourcecode-blog/static/css/main.c623ac3b.chunk.css",
+    "main.css": "/sourcecode-blog/static/css/main.4f8283e1.chunk.css",
     "main.js": "/sourcecode-blog/static/js/main.c41b246c.chunk.js",
     "main.js.map": "/sourcecode-blog/static/js/main.c41b246c.chunk.js.map",
     "runtime-main.js": "/sourcecode-blog/static/js/runtime-main.a4d051d3.js",
@@ -8,16 +8,16 @@
     "static/js/2.f14f39c8.chunk.js": "/sourcecode-blog/static/js/2.f14f39c8.chunk.js",
     "static/js/2.f14f39c8.chunk.js.map": "/sourcecode-blog/static/js/2.f14f39c8.chunk.js.map",
     "index.html": "/sourcecode-blog/index.html",
-    "precache-manifest.32876a18df203f47d8b992270c400d4d.js": "/sourcecode-blog/precache-manifest.32876a18df203f47d8b992270c400d4d.js",
+    "precache-manifest.8ce51bc674bd8ca110544b84ac3a2d57.js": "/sourcecode-blog/precache-manifest.8ce51bc674bd8ca110544b84ac3a2d57.js",
     "service-worker.js": "/sourcecode-blog/service-worker.js",
-    "static/css/main.c623ac3b.chunk.css.map": "/sourcecode-blog/static/css/main.c623ac3b.chunk.css.map",
+    "static/css/main.4f8283e1.chunk.css.map": "/sourcecode-blog/static/css/main.4f8283e1.chunk.css.map",
     "static/js/2.f14f39c8.chunk.js.LICENSE": "/sourcecode-blog/static/js/2.f14f39c8.chunk.js.LICENSE",
     "static/media/App.scss": "/sourcecode-blog/static/media/Exo2-SemiBold.70433774.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.a4d051d3.js",
     "static/js/2.f14f39c8.chunk.js",
-    "static/css/main.c623ac3b.chunk.css",
+    "static/css/main.4f8283e1.chunk.css",
     "static/js/main.c41b246c.chunk.js"
   ]
 }
