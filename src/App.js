@@ -75,7 +75,7 @@ class App extends React.Component {
           )}
 
           <Switch>
-            <Route exact path="/sourcecode-blog/">
+            <Route exact path="/sourcecode-blog">
               <Home />
             </Route>
             <Route exact path="/sourcecode-blog/search">

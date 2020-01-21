@@ -123,12 +123,12 @@ class NewBlog extends Component {
                 height: 500,
                 menubar: false,
                 plugins: [
-                  "advlist autolink lists link image charmap print preview anchor",
+                  "advlist autolink lists link image charmap print preview anchor codesample emoticons",
                   "searchreplace visualblocks code fullscreen",
                   "insertdatetime media table paste code help wordcount"
                 ],
                 toolbar:
-                  "undo redo | formatselect |image media link| bold italic backcolor forecolor |emoticons| table|alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help"
+                  "undo redo | formatselect |image media link codesample| bold italic backcolor forecolor |emoticons| table|alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help"
               }}
               onChange={e => {
                 this.setState({ content: e.target.getContent() });
