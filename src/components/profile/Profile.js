@@ -65,6 +65,7 @@ class Profile extends Component {
   handleSignOut = e => {
     localStorage.removeItem("blogAuthenticated");
     localStorage.removeItem("username");
+    window.location.replace("https://fhb369.github.io/sourcecode-blog/");
   };
 
   render() {
