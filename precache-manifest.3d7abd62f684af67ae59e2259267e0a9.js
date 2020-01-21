@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "091101dff19114329ce21bdb4b880955",
+    "revision": "30d703e85d491833b2d628824a1c15ed",
     "url": "/sourcecode-blog/index.html"
   },
   {
-    "revision": "29a757dce03d5cc06c15",
-    "url": "/sourcecode-blog/static/css/main.4f8283e1.chunk.css"
+    "revision": "65cdfce88f32b0b29345",
+    "url": "/sourcecode-blog/static/css/main.acad4cda.chunk.css"
   },
   {
-    "revision": "4bd2e6d3a455d5e7c3db",
-    "url": "/sourcecode-blog/static/js/2.f14f39c8.chunk.js"
+    "revision": "303cd693047b027f9ae8",
+    "url": "/sourcecode-blog/static/js/2.2a79f216.chunk.js"
   },
   {
     "revision": "f4c26eca1ec13091949231c30bb51905",
-    "url": "/sourcecode-blog/static/js/2.f14f39c8.chunk.js.LICENSE"
+    "url": "/sourcecode-blog/static/js/2.2a79f216.chunk.js.LICENSE"
   },
   {
-    "revision": "29a757dce03d5cc06c15",
-    "url": "/sourcecode-blog/static/js/main.373d0cf7.chunk.js"
+    "revision": "65cdfce88f32b0b29345",
+    "url": "/sourcecode-blog/static/js/main.0793a0ab.chunk.js"
   },
   {
     "revision": "28bf7d85f06a08c23d7f",
