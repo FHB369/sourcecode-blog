@@ -19,6 +19,7 @@ class EditBlog extends Component {
       content: "",
       type: "DISCUSSION",
       username: localStorage.getItem("username"),
+      user: "",
       err: "",
       redirect: false
     };
@@ -33,7 +34,8 @@ class EditBlog extends Component {
         // handle success
         self.setState({
           title: response.data.data[0].title,
-          content: response.data.data[0].content
+          content: response.data.data[0].content,
+          user: response.data.data[0].username
         });
       })
       .catch(function(error) {
@@ -133,6 +135,9 @@ class EditBlog extends Component {
 
   render() {
     if (this.state.redirect || !this.state.isLoggedin) {
+      return <Redirect to={"/sourcecode-blog/"} />;
+    }
+    if (this.state.user === this.state.username) {
       return <Redirect to={"/sourcecode-blog/"} />;
     }
     if (this.state.content === "") {
