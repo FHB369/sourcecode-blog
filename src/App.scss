@@ -185,14 +185,14 @@ body {
   height: 24px;
   margin-top: 18px;
   margin-bottom: 18px;
-  opacity: 40%;
+  opacity: 0.4;
   cursor: pointer;
 
   transition: opacity 0.5s ease;
 }
 
 .active {
-  opacity: 100% !important;
+  opacity: 1 !important;
 
   transition: opacity 0.5s ease;
 }
@@ -216,7 +216,7 @@ body {
 
   color: #ffffff;
 
-  opacity: 40%;
+  opacity: 0.4;
   cursor: pointer;
 
   transition: opacity 0.5s ease;
@@ -234,7 +234,7 @@ body {
 
   color: #ffffff;
 
-  opacity: 40%;
+  opacity: 0.4;
   cursor: pointer;
 
   transition: opacity 0.5s ease;
