@@ -297,6 +297,16 @@ body {
   transition: background-color 0.5s ease;
 }
 
+.btn-red {
+  background-color: transparent;
+  color: rgba(219, 19, 19, 1);
+}
+
+.btn-red:hover {
+  background-color: transparent !important;
+  color: rgba(219, 19, 19, 0.7);
+}
+
 .btn-submit:hover,
 .btn-signin:hover {
   background-color: #06a0b4;
@@ -572,4 +582,23 @@ body {
   justify-content: center;
   font-size: 25px;
   color: #06a0b4 !important;
+}
+
+.center {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  justify-self: center;
+}
+
+.center-feed {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  justify-self: center;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ProfileIcon from "../icons/ProfileIcon";
 import querystring from "querystring";
-
+import Loader from "react-loader-spinner";
 import Axios from "axios";
 import ReactHtmlParser from "react-html-parser";
 
@@ -216,6 +216,17 @@ class DiscussionViewer extends Component {
   };
 
   render() {
+    if (this.state.content === "") {
+      return (
+        <Loader
+          type="Puff"
+          className="center"
+          color="#00BFFF"
+          height={100}
+          width={100}
+        />
+      );
+    }
     return (
       <div className="content">
         <div>
@@ -224,6 +235,7 @@ class DiscussionViewer extends Component {
         <br></br>
 
         <div>{ReactHtmlParser(this.state.content)}</div>
+        <script src="prism.js"></script>
 
         <br />
         <div className="blog-attr">

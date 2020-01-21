@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import Axios from "axios";
-
+import Loader from "react-loader-spinner";
 import ProfileIconLarge from "../icons/ProfileIconLarge";
 
 class Profile extends Component {
@@ -72,6 +72,17 @@ class Profile extends Component {
     if (!this.state.isLoggedin) {
       return <Redirect to="/sourcecode-blog/" />;
     }
+    if (this.state.name === "") {
+      return (
+        <Loader
+          type="Puff"
+          className="center"
+          color="#00BFFF"
+          height={100}
+          width={100}
+        />
+      );
+    }
     return (
       <div>
         <div className="profile-container">
@@ -101,7 +112,14 @@ class Profile extends Component {
                 <Link to={"/sourcecode-blog/blog/" + blog.id} key={blog.id}>
                   <div className={this.getCardSize(blog.title)}>
                     {blog.title}
-                    <p className="small-text-feed">{blog.username}</p>
+
+                    <p className="small-text-feed">
+                      {blog.username}
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      <Link to={"/sourcecode-blog/editBlog/" + blog.id}>
+                        <small>Edit</small>
+                      </Link>
+                    </p>
                   </div>
                 </Link>
               ) : (

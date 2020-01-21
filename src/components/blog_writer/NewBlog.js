@@ -76,7 +76,7 @@ class NewBlog extends Component {
 
   render() {
     if (this.state.redirect || !this.state.isLoggedin) {
-      return <Redirect to="/sourcecode-blog/" />;
+      return <Redirect to={"/sourcecode-blog/blog/" + this.state.id} />;
     }
     return (
       <div className="content">
@@ -120,12 +120,27 @@ class NewBlog extends Component {
               apiKey="i7252if3limictidpuqd9e8tj6x234wgfm5unzlhfqx38cvg"
               initialValue="<p>Write your blog here</p>"
               init={{
+                selector: "textarea", // change this value according to your HTML
+                skin: "oxide-dark",
+                content_css: "dark",
                 height: 500,
                 menubar: false,
                 plugins: [
                   "advlist autolink lists link image charmap print preview anchor codesample emoticons",
                   "searchreplace visualblocks code fullscreen",
                   "insertdatetime media table paste code help wordcount"
+                ],
+                codesample_languages: [
+                  { text: "HTML/XML", value: "markup" },
+                  { text: "JavaScript", value: "javascript" },
+                  { text: "CSS", value: "css" },
+                  { text: "PHP", value: "php" },
+                  { text: "Ruby", value: "ruby" },
+                  { text: "Python", value: "python" },
+                  { text: "Java", value: "java" },
+                  { text: "C", value: "c" },
+                  { text: "C#", value: "csharp" },
+                  { text: "C++", value: "cpp" }
                 ],
                 toolbar:
                   "undo redo | formatselect |image media link codesample| bold italic backcolor forecolor |emoticons| table|alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help"

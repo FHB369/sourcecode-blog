@@ -16,6 +16,7 @@ import CreateIcon from "./components/icons/CreateIcon";
 import Logo from "./components/icons/Logo";
 import ProfileIcon from "./components/icons/ProfileIcon";
 import SearchIcon from "./components/icons/SearchIcon";
+import EditBlog from "./components/blog_writer/EditBlog";
 
 class App extends React.Component {
   constructor(props) {
@@ -85,14 +86,13 @@ class App extends React.Component {
               path="/sourcecode-blog/blog/:id"
               component={DiscussionViewer}
             />
-
+            <Route path="/sourcecode-blog/editBlog/:id" component={EditBlog} />
             <Route exact path="/sourcecode-blog/profile">
               <Profile />
             </Route>
             <Route exact path="/sourcecode-blog/newBlog">
               <NewBlog />
             </Route>
-
             <Route exact path="/sourcecode-blog/signin">
               <Login />
             </Route>

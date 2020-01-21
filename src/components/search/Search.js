@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import Loader from "react-loader-spinner";
 
 class Search extends Component {
   constructor(props) {
@@ -31,6 +32,17 @@ class Search extends Component {
   }
 
   render() {
+    if (this.state.results === []) {
+      return (
+        <Loader
+          type="Puff"
+          className="center"
+          color="#00BFFF"
+          height={100}
+          width={100}
+        />
+      );
+    }
     return (
       <div>
         <div>
