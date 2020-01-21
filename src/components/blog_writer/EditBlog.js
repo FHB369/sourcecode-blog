@@ -137,7 +137,7 @@ class EditBlog extends Component {
     if (this.state.redirect || !this.state.isLoggedin) {
       return <Redirect to={"/sourcecode-blog/"} />;
     }
-    if (this.state.user !== this.state.username) {
+    if (this.state.user !== "" && this.state.user !== this.state.username) {
       return <Redirect to={"/sourcecode-blog/"} />;
     }
     if (this.state.content === "") {
