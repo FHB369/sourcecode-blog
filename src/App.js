@@ -9,60 +9,98 @@ import Search from "./components/search/Search";
 import Profile from "./components/profile/Profile";
 import NewBlog from "./components/blog_writer/NewBlog";
 import DiscussionViewer from "./components/blog_viewer/DiscussionViewer";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
 
 import CreateIcon from "./components/icons/CreateIcon";
 import Logo from "./components/icons/Logo";
 import ProfileIcon from "./components/icons/ProfileIcon";
 import SearchIcon from "./components/icons/SearchIcon";
 
-function App() {
-  return (
-    <BrowserRouter>
-      <div>
-        <Link to="/">
-          <div className="logo">
-            <Logo />
-          </div>
-        </Link>
+class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-        <Link to="/newBlog">
-          <div className="newBlog">
-            <CreateIcon />
-          </div>
-        </Link>
+    this.state = {
+      isAuthenticated: false
+    };
+  }
 
-        <Link to="/search">
-          <div className="search">
-            <SearchIcon />
-          </div>
-        </Link>
+  componentDidMount() {
+    if (localStorage.getItem("blogAuthenticated") === "true") {
+      this.setState({
+        isAuthenticated: true
+      });
+    }
+  }
 
-        <Link to="/profile">
-          <div className="profile">
-            <ProfileIcon />
-          </div>
-        </Link>
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <Link to="/">
+            <div className="logo">
+              <Logo />
+            </div>
+          </Link>
 
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-          <Route path="/search">
-            <Search />
-          </Route>
-          <Route path="/newBlog">
-            <NewBlog />
-          </Route>
-          <Route path="/blog/:id">
-            <DiscussionViewer />
-          </Route>
-        </Switch>
-      </div>
-    </BrowserRouter>
-  );
+          {this.state.isAuthenticated ? (
+            <Link to="/newBlog">
+              <div className="newBlog">
+                <CreateIcon />
+              </div>
+            </Link>
+          ) : (
+            <Link to="/signin">
+              <div className="newBlog">
+                <button className="btn-signin">Sign&nbsp;In</button>
+              </div>
+            </Link>
+          )}
+
+          <Link to="/search">
+            <div className={this.state.isAuthenticated ? "search" : "profile"}>
+              <SearchIcon />
+            </div>
+          </Link>
+
+          {this.state.isAuthenticated ? (
+            <Link to="/profile">
+              <div className="profile">
+                <ProfileIcon />
+              </div>
+            </Link>
+          ) : (
+            <div />
+          )}
+
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/search">
+              <Search />
+            </Route>
+            <Route path="/blog/:id" component={DiscussionViewer} />
+
+            <Route exact path="/profile">
+              <Profile />
+            </Route>
+            <Route exact path="/newBlog">
+              <NewBlog />
+            </Route>
+
+            <Route exact path="/signin">
+              <Login />
+            </Route>
+            <Route exact path="/signup">
+              <Register />
+            </Route>
+          </Switch>
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;

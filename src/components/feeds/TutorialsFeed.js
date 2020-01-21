@@ -1,64 +1,58 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Axios from "axios";
 
 class TutorialsFeed extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      category: props.sort,
+      blogs: []
+    };
+  }
+
+  componentDidMount() {
+    var self = this;
+    Axios.get(
+      "https://sourcecode-blog.000webhostapp.com/api/blog/" +
+        this.state.category +
+        "/tutorial"
+    )
+      .then(function(response) {
+        // handle success
+        self.setState({
+          blogs: response.data.data
+        });
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function() {
+        // always executed
+      });
+  }
+
+  getCardSize = a => {
+    if (a.length > 40) {
+      return "large-box";
+    } else {
+      return "medium-box";
+    }
+  };
+
   render() {
     return (
       <div className="feed-container">
-        <Link to="/blog/1">
-          <div className="medium-box">
-            Blog Title
-            <p className="small-text-feed">Lorem</p>
-          </div>
-        </Link>
-        <Link to="/blog/2">
-          <div className="medium-box">
-            Blog Title
-            <p className="small-text-feed">Lorem</p>
-          </div>
-        </Link>
-        <Link to="/blog/3">
-          <div className="large-box">
-            Blog Title
-            <p className="small-text-feed">Lorem</p>
-          </div>
-        </Link>
-        <Link to="/blog/4">
-          <div className="large-box">
-            Blog Title
-            <p className="small-text-feed">Lorem</p>
-          </div>
-        </Link>
-        <Link to="/blog/5">
-          <div className="medium-box">
-            Blog Title
-            <p className="small-text-feed">Lorem</p>
-          </div>
-        </Link>
-        <Link to="/blog/6">
-          <div className="medium-box">
-            Blog Title
-            <p className="small-text-feed">Lorem</p>
-          </div>
-        </Link>
-        <Link to="/blog/7">
-          <div className="medium-box">
-            Blog Title
-            <p className="small-text-feed">Lorem</p>
-          </div>
-        </Link>
-        <Link to="/blog/8">
-          <div className="medium-box">
-            Blog Title
-            <p className="small-text-feed">Lorem</p>
-          </div>
-        </Link>
-        <Link to="/blog/9">
-          <div className="large-box">
-            Blog Title
-            <p className="small-text-feed">Lorem</p>
-          </div>
-        </Link>
+        {this.state.blogs.map(blog => (
+          <Link to={"/blog/" + blog.id} key={blog.id}>
+            <div className={this.getCardSize(blog.title)}>
+              {blog.title}
+              <p className="small-text-feed">{blog.username}</p>
+            </div>
+          </Link>
+        ))}
       </div>
     );
   }

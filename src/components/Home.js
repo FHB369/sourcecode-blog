@@ -16,7 +16,9 @@ class Home extends Component {
       tgl: false,
       trending: true,
       popular: false,
-      recent: false
+      recent: false,
+      sort: "trending",
+      load: 1
     };
   }
 
@@ -34,7 +36,9 @@ class Home extends Component {
     this.setState({
       trending: true,
       popular: false,
-      recent: false
+      recent: false,
+      sort: "trending",
+      load: Math.random()
     });
   };
 
@@ -42,7 +46,9 @@ class Home extends Component {
     this.setState({
       trending: false,
       popular: true,
-      recent: false
+      recent: false,
+      sort: "popular",
+      load: Math.random()
     });
   };
 
@@ -50,7 +56,9 @@ class Home extends Component {
     this.setState({
       trending: false,
       popular: false,
-      recent: true
+      recent: true,
+      sort: "recent",
+      load: Math.random()
     });
   };
 
@@ -75,8 +83,12 @@ class Home extends Component {
         </div>
         {this.state.tgl ? <div className="tutorial-border"></div> : <div />}
 
-        <div className="feed">
-          {this.state.tgl ? <TutorialsFeed /> : <DiscussionsFeed />}
+        <div className="feed" key={this.state.load}>
+          {this.state.tgl ? (
+            <TutorialsFeed sort={this.state.sort} />
+          ) : (
+            <DiscussionsFeed sort={this.state.sort} />
+          )}
         </div>
 
         <div className="right-nav">

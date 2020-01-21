@@ -1,31 +1,83 @@
 import React, { Component } from "react";
-import CKEditor from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import Axios from "axios";
+import querystring from "querystring";
+import { Editor } from "@tinymce/tinymce-react";
+import { Redirect } from "react-router-dom";
+import M from "materialize-css";
 
 class NewBlog extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoggedin: localStorage.getItem("blogAuthenticated"),
       discussion: true,
-      tutorial: false
+      tutorial: false,
+      title: "",
+      content: "",
+      type: "DISCUSSION",
+      username: localStorage.getItem("username"),
+      err: "",
+      redirect: false
     };
   }
 
   setDiscussion = () => {
     this.setState({
       discussion: true,
-      tutorial: false
+      tutorial: false,
+      type: "DISCUSSION"
     });
   };
 
   setTutorial = () => {
     this.setState({
       discussion: false,
-      tutorial: true
+      tutorial: true,
+      type: "TUTORIAL"
     });
   };
 
+  handleSubmit = e => {
+    e.preventDefault();
+
+    var self = this;
+    Axios.post(
+      "https://sourcecode-blog.000webhostapp.com/api/blog/new",
+      querystring.stringify({
+        title: self.state.title,
+        content: self.state.content.toString(),
+        username: self.state.username,
+        type: self.state.type
+      })
+    )
+      .then(function(response) {
+        if (response.status === 200) {
+          self.setState({
+            err: response.data.message,
+            redirect: true
+          });
+
+          window.location.reload();
+        } else {
+          self.setState({
+            err: "Can't add blog. Try again"
+          });
+          M.toast({ html: self.state.err });
+        }
+      })
+      .catch(function(error) {
+        self.setState({
+          err: "Can't add blog. Try again"
+        });
+        M.toast({ html: self.state.err });
+      })
+      .finally(function() {});
+  };
+
   render() {
+    if (this.state.redirect || !this.state.isLoggedin) {
+      return <Redirect to="/" />;
+    }
     return (
       <div className="content">
         <div>
@@ -58,68 +110,35 @@ class NewBlog extends Component {
               className="title-editor"
               type="text"
               placeholder="Write the title"
+              onChange={e => {
+                this.setState({ title: e.target.value });
+              }}
             ></input>
 
-            {this.state.discussion ? (
-              <div>
-                <h3>&nbsp;&nbsp;Problem Link</h3>
-
-                <input
-                  className="title-editor"
-                  type="text"
-                  placeholder="Link of the discussed problem"
-                ></input>
-              </div>
-            ) : (
-              <div />
-            )}
             <h3>&nbsp;&nbsp;Blog Content</h3>
-            <CKEditor
-              editor={ClassicEditor}
-              data="<p>Write your blog</p>"
-              onInit={editor => {
-                // You can store the "editor" and use when it is needed.
-                console.log("Editor is ready to use!", editor);
+            <Editor
+              apiKey="i7252if3limictidpuqd9e8tj6x234wgfm5unzlhfqx38cvg"
+              initialValue="<p>Write your blog here</p>"
+              init={{
+                height: 500,
+                menubar: false,
+                plugins: [
+                  "advlist autolink lists link image charmap print preview anchor",
+                  "searchreplace visualblocks code fullscreen",
+                  "insertdatetime media table paste code help wordcount"
+                ],
+                toolbar:
+                  "undo redo | formatselect |image media link| bold italic backcolor forecolor |emoticons| table|alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help"
               }}
-              onChange={(event, editor) => {
-                const data = editor.getData();
-                console.log({ event, editor, data });
-              }}
-              onBlur={(event, editor) => {
-                console.log("Blur.", editor);
-              }}
-              onFocus={(event, editor) => {
-                console.log("Focus.", editor);
+              onChange={e => {
+                this.setState({ content: e.target.getContent() });
               }}
             />
             <br />
 
-            {this.state.tutorial ? (
-              <div>
-                <h3>&nbsp;&nbsp;References & Further Readings</h3>
-                <CKEditor
-                  editor={ClassicEditor}
-                  data="<p></p>"
-                  onInit={editor => {
-                    // You can store the "editor" and use when it is needed.
-                    console.log("Editor is ready to use!", editor);
-                  }}
-                  onChange={(event, editor) => {
-                    const data = editor.getData();
-                    console.log({ event, editor, data });
-                  }}
-                  onBlur={(event, editor) => {
-                    console.log("Blur.", editor);
-                  }}
-                  onFocus={(event, editor) => {
-                    console.log("Focus.", editor);
-                  }}
-                />
-              </div>
-            ) : (
-              <div />
-            )}
-            <button className="btn-submit">PUBLISH</button>
+            <button className="btn-submit" onClick={this.handleSubmit}>
+              PUBLISH
+            </button>
           </div>
         </div>
       </div>
