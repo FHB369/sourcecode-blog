@@ -46,7 +46,7 @@ class DiscussionsFeed extends Component {
     return (
       <div className="feed-container">
         {this.state.blogs.map(blog => (
-          <Link to={"/blog/" + blog.id} key={blog.id}>
+          <Link to={"/sourcecode-blog/blog/" + blog.id} key={blog.id}>
             <div className={this.getCardSize(blog.title)}>
               {blog.title}
               <p className="small-text-feed">{blog.username}</p>

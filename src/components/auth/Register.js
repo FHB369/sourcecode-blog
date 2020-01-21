@@ -56,7 +56,7 @@ class Register extends React.Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to="/" />;
+      return <Redirect to="/sourcecode-blog/" />;
     }
     return (
       <div className="auth-container">
@@ -99,7 +99,7 @@ class Register extends React.Component {
             Sign Up
           </button>
           &nbsp; &nbsp; &nbsp;
-          <Link to="/signin">
+          <Link to="/sourcecode-blog/signin">
             <small>Already have an account? Sign In</small>
           </Link>
         </div>

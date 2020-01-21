@@ -76,7 +76,7 @@ class NewBlog extends Component {
 
   render() {
     if (this.state.redirect || !this.state.isLoggedin) {
-      return <Redirect to="/" />;
+      return <Redirect to="/sourcecode-blog/" />;
     }
     return (
       <div className="content">

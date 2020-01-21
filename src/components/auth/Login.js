@@ -52,7 +52,7 @@ class Login extends React.Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to="/" />;
+      return <Redirect to="/sourcecode-blog/" />;
     }
     return (
       <div className="auth-container">
@@ -82,7 +82,7 @@ class Login extends React.Component {
               Sign In
             </button>
             &nbsp; &nbsp; &nbsp;
-            <Link to="/signup">
+            <Link to="/sourcecode-blog/signup">
               <small>Create an account</small>
             </Link>
           </form>

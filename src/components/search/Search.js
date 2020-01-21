@@ -54,7 +54,10 @@ class Search extends Component {
                 result.username
                   .toLowerCase()
                   .search(this.state.query.toLowerCase()) !== -1 ? (
-                  <Link to={"/blog/" + result.id} key={result.id}>
+                  <Link
+                    to={"/sourcecode-blog/blog/" + result.id}
+                    key={result.id}
+                  >
                     <div className="search-result-box">
                       {result.title}
                       <p className="small-text">

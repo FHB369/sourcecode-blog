@@ -70,7 +70,7 @@ class Profile extends Component {
 
   render() {
     if (!this.state.isLoggedin) {
-      return <Redirect to="/" />;
+      return <Redirect to="/sourcecode-blog/" />;
     }
     return (
       <div>
@@ -94,7 +94,7 @@ class Profile extends Component {
           <div className="profile-feed-container">
             {this.state.blogs.map(blog =>
               blog.username === this.state.username ? (
-                <Link to={"/blog/" + blog.id} key={blog.id}>
+                <Link to={"/sourcecode-blog/blog/" + blog.id} key={blog.id}>
                   <div className={this.getCardSize(blog.title)}>
                     {blog.title}
                     <p className="small-text-feed">{blog.username}</p>

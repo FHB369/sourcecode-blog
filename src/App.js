@@ -38,34 +38,34 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div>
-          <Link to="/">
+          <Link to="/sourcecode-blog">
             <div className="logo">
               <Logo />
             </div>
           </Link>
 
           {this.state.isAuthenticated ? (
-            <Link to="/newBlog">
+            <Link to="/sourcecode-blog/newBlog">
               <div className="newBlog">
                 <CreateIcon />
               </div>
             </Link>
           ) : (
-            <Link to="/signin">
+            <Link to="/sourcecode-blog/signin">
               <div className="newBlog">
                 <button className="btn-signin">Sign&nbsp;In</button>
               </div>
             </Link>
           )}
 
-          <Link to="/search">
+          <Link to="/sourcecode-blog/search">
             <div className={this.state.isAuthenticated ? "search" : "profile"}>
               <SearchIcon />
             </div>
           </Link>
 
           {this.state.isAuthenticated ? (
-            <Link to="/profile">
+            <Link to="/sourcecode-blog/profile">
               <div className="profile">
                 <ProfileIcon />
               </div>
@@ -75,25 +75,28 @@ class App extends React.Component {
           )}
 
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/sourcecode-blog/">
               <Home />
             </Route>
-            <Route exact path="/search">
+            <Route exact path="/sourcecode-blog/search">
               <Search />
             </Route>
-            <Route path="/blog/:id" component={DiscussionViewer} />
+            <Route
+              path="/sourcecode-blog/blog/:id"
+              component={DiscussionViewer}
+            />
 
-            <Route exact path="/profile">
+            <Route exact path="/sourcecode-blog/profile">
               <Profile />
             </Route>
-            <Route exact path="/newBlog">
+            <Route exact path="/sourcecode-blog/newBlog">
               <NewBlog />
             </Route>
 
-            <Route exact path="/signin">
+            <Route exact path="/sourcecode-blog/signin">
               <Login />
             </Route>
-            <Route exact path="/signup">
+            <Route exact path="/sourcecode-blog/signup">
               <Register />
             </Route>
           </Switch>
