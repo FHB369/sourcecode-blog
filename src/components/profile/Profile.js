@@ -65,12 +65,12 @@ class Profile extends Component {
   handleSignOut = e => {
     localStorage.removeItem("blogAuthenticated");
     localStorage.removeItem("username");
-    window.location.reload();
   };
 
   render() {
     if (!this.state.isLoggedin) {
       return <Redirect to="/sourcecode-blog/" />;
+      window.location.reload();
     }
     return (
       <div>
