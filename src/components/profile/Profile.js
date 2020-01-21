@@ -70,7 +70,6 @@ class Profile extends Component {
   render() {
     if (!this.state.isLoggedin) {
       return <Redirect to="/sourcecode-blog/" />;
-      window.location.reload();
     }
     return (
       <div>
@@ -82,7 +81,11 @@ class Profile extends Component {
               <h1>{this.state.name}</h1>
               <p className="blue-text">@{this.state.username}</p>
               <p>{this.state.email}</p>
-              <button className="btn-submit" onClick={this.handleSignOut}>
+              <button
+                className="btn-submit"
+                type="submit"
+                onClick={this.handleSignOut}
+              >
                 Sign&nbsp;Out
               </button>
             </div>
